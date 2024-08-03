@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mt-5">
+    <div class="col-12">
+        <h2>图片画廊</h2>
+        <div class="row">
+            {% for image in images %}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img src="{{ url_for('view_image', image_id=image.id) }}" class="bd-placeholder-img card-img-top" alt="{{ image.filename }}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ image.filename }}</h5>
+                        <a href="{{ url_for('download', image_id=image.id) }}" class="btn btn-primary">下载</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
